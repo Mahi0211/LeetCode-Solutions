@@ -5,22 +5,22 @@ var MinStack = function () {
 
 MinStack.prototype.push = function (val) {
     this.stack.push(val);
-    //   if (
-    //     this.minStack.length === 0 ||
-    //     val <= this.minStack[this.minStack.length - 1]
-    //   ) {
-    //     this.minStack.push(val);
-    //   }
-    const lastMin = this.minStack.length === 0 ? val : this.minStack.at(-1);
-    this.minStack.push(Math.min(val, lastMin));
+    if (
+        this.minStack.length === 0 ||
+        val <= this.minStack[this.minStack.length - 1]
+    ) {
+        this.minStack.push(val);
+    }
+    // const lastMin = this.minStack.length === 0 ? val : this.minStack.at(-1);
+    // this.minStack.push(Math.min(val, lastMin));
 };
 
 MinStack.prototype.pop = function () {
-    this.stack.pop();
-    //     if (val === this.minStack[this.minStack.length - 1]) {
-    //     this.minStack.pop();
-    //   }
-    this.minStack.pop();
+    const val = this.stack.pop();
+    if (val === this.minStack[this.minStack.length - 1]) {
+        this.minStack.pop();
+    }
+    // this.minStack.pop();
 };
 
 MinStack.prototype.top = function () {

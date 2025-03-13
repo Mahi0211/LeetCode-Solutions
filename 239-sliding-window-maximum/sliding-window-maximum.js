@@ -13,7 +13,7 @@ var maxSlidingWindow = function (nums, k) {
             dequeue.shift()
         }
 
-        while (dequeue.length > 0 && nums[dequeue.at(-1)] < nums[i]) {
+        while (dequeue.length > 0 && nums[dequeue.at(-1)] <= nums[i]) {
             dequeue.pop()
         }
         dequeue.push(i)

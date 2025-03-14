@@ -9,11 +9,17 @@ var isPalindrome = function (x) {
     let reversed = 0;
     let original = x;
 
-    while (x > 0) {
-        reversed = reversed * 10 + (x % 10);
-        x = Math.floor(x / 10)
+    while (original > 0) {
+        reversed = (reversed * 10) + (original % 10);
+        original = Math.floor(original / 10)
     }
-    return reversed === original
+    return reversed === x
+
+    // while (x > 0) {
+    //     reversed = (reversed * 10) + (x % 10);
+    //     x = Math.floor(x / 10)
+    // }
+    // return reversed === original
 }
 
 // var isPalindrome = function (x) {

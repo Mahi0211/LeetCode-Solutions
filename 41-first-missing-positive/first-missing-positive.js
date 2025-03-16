@@ -3,6 +3,9 @@
  * @return {number}
  */
 var firstMissingPositive = function (nums) {
+    if (nums === null || nums.length === 0) {
+        return 1;
+    }
     const n = nums.length;
 
     // Step 1: Rearrange numbers to their correct positions

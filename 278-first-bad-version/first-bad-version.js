@@ -27,9 +27,6 @@ var solution = function (isBadVersion) {
                 left = mid + 1
             }
         }
-        if (left === right && isBadVersion(left)) {
-            return left
-        }
-        return -1;
+        return left;
     };
 };

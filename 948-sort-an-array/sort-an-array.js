@@ -3,29 +3,60 @@
  * @return {number[]}
  */
 
-//using Merge sort
-var sortArray = function (nums) {
-    //base case
-    if (nums.length <= 1) return nums;
+// using Quick sort
+var sortArray = function (arr) {
+    return quickSort(arr, 0, arr.length - 1);
+}
 
-    let mid = Math.floor(nums.length / 2);
-    let left = sortArray(nums.slice(0, mid));
-    let right = sortArray(nums.slice(mid));
+var quickSort = function (arr, low, high) {
+    if (low >= high) return arr; //base condition
+    let start = low;
+    let end = high;
+    let mid = Math.floor(start + (end - start) / 2);
+    let pivot = arr[mid];
 
-    return merge(left, right);
-};
-
-function merge(left, right) {
-    let sortedArr = [];
-    while (left.length && right.length) {
-        if (left[0] < right[0]) {
-            sortedArr.push(left.shift());
-        } else {
-            sortedArr.push(right.shift());
+    while (start <= end) {
+        while (arr[start] < pivot) {
+            start++;
+        }
+        while (arr[end] > pivot) {
+            end--;
+        }
+        if (start <= end) {
+            [arr[start], arr[end]] = [arr[end], arr[start]];
+            start++;
+            end--;
         }
     }
-    return [...sortedArr, ...left, ...right];
-}
+    quickSort(arr, low, end);
+    quickSort(arr, start, high);
+
+    return arr;
+};
+
+//using Merge sort
+// var sortArray = function (nums) {
+//     //base case
+//     if (nums.length <= 1) return nums;
+
+//     let mid = Math.floor(nums.length / 2);
+//     let left = sortArray(nums.slice(0, mid));
+//     let right = sortArray(nums.slice(mid));
+
+//     return merge(left, right);
+// };
+
+// function merge(left, right) {
+//     let sortedArr = [];
+//     while (left.length && right.length) {
+//         if (left[0] < right[0]) {
+//             sortedArr.push(left.shift());
+//         } else {
+//             sortedArr.push(right.shift());
+//         }
+//     }
+//     return [...sortedArr, ...left, ...right];
+// }
 
 
 //using Selection sort

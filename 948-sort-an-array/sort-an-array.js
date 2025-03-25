@@ -10,10 +10,20 @@ var sortArray = function (arr) {
 
 var quickSort = function (arr, low, high) {
     if (low >= high) return arr; //base condition
+
+    // Median of three pivot selection
+    let mid = Math.floor((low + high) / 2);
+    let pivotIndex = medianOfThree(arr, low, mid, high);
+    let pivot = arr[pivotIndex];
+
+    // Swap pivot to the middle for partitioning
+    [arr[pivotIndex], arr[mid]] = [arr[mid], arr[pivotIndex]];
+
     let start = low;
     let end = high;
-    let mid = Math.floor(start + (end - start) / 2);
-    let pivot = arr[mid];
+
+    // Swap pivot to the middle for partitioning
+    [arr[pivotIndex], arr[mid]] = [arr[mid], arr[pivotIndex]];
 
     while (start <= end) {
         while (arr[start] < pivot) {
@@ -32,6 +42,14 @@ var quickSort = function (arr, low, high) {
     quickSort(arr, start, high);
 
     return arr;
+};
+
+// Function to find the median of three values
+var medianOfThree = function (arr, low, mid, high) {
+    let a = arr[low], b = arr[mid], c = arr[high];
+    if ((a > b) ^ (a > c)) return low; // a is median
+    if ((b > a) ^ (b > c)) return mid; // b is median
+    return high; // c is median
 };
 
 //using Merge sort

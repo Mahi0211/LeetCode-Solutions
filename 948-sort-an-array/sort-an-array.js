@@ -22,9 +22,6 @@ var quickSort = function (arr, low, high) {
     let start = low;
     let end = high;
 
-    // Swap pivot to the middle for partitioning
-    [arr[pivotIndex], arr[mid]] = [arr[mid], arr[pivotIndex]];
-
     while (start <= end) {
         while (arr[start] < pivot) {
             start++;

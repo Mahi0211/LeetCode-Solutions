@@ -3,6 +3,7 @@
  * @return {number}
  */
 var maximumGap = function (nums) {
+    if (nums.length < 2) return 0;
     quickSort(nums, 0, nums.length - 1);
     let max = 0;
     let current = 0;

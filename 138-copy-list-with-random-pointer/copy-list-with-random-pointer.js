@@ -11,26 +11,16 @@
  * @param {_Node} head
  * @return {_Node}
  */
-var copyRandomList = function(head) {
+var copyRandomList = function (head) {
     let temp = head;
     let map = new Map();
 
-    let dummy = new ListNode(0);
-    let current = dummy;
-
-    // First pass: Copy nodes and store them in the map
     while (temp) {
-        current.next = new ListNode(temp.val); // Use temp.val instead of current.val
-        current = current.next;
-
-        map.set(temp, current);
-
+        map.set(temp, new Node(temp.val));
         temp = temp.next;
     }
 
     temp = head;
-
-    // Second pass: Assign next and random pointers
     while (temp) {
         let copyNode = map.get(temp);
         copyNode.next = map.get(temp.next) || null;
@@ -38,5 +28,5 @@ var copyRandomList = function(head) {
         temp = temp.next;
     }
 
-    return dummy.next;
+    return map.get(head);
 };

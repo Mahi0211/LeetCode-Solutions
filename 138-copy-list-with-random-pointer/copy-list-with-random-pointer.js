@@ -12,6 +12,8 @@
  * @return {_Node}
  */
 var copyRandomList = function (head) {
+    if (!head) return null;
+
     let temp = head;
     let map = new Map();
 

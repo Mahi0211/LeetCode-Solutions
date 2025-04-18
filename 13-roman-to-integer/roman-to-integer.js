@@ -14,16 +14,28 @@ var romanToInt = function (s) {
     };
 
     let sum = 0;
-    let n = s.length;
-    let i = 0;
+    //     let n = s.length;
+    //     let i = 0;
 
-    while (i < n) {
-        if (i < n - 1 && map[s[i]] < map[s[i + 1]]) {
-            sum += map[s[i + 1]] - map[s[i]];
-            i += 2;
+    //     while (i < n) {
+    //         if (i < n - 1 && map[s[i]] < map[s[i + 1]]) {
+    //             sum += map[s[i + 1]] - map[s[i]];
+    //             i += 2;
+    //         } else {
+    //             sum += map[s[i]];
+    //             i += 1;
+    //         }
+    //     }
+    //     return sum;
+
+    for (let i = 0; i < s.length; i++) {
+        let current = map[s[i]];
+        let next = map[s[i + 1]];
+
+        if (current < next) {
+            sum -= current;
         } else {
-            sum += map[s[i]];
-            i += 1;
+            sum += current
         }
     }
     return sum;

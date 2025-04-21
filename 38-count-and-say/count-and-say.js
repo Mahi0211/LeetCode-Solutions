@@ -35,10 +35,10 @@ var countAndSay = function (n) {
         if (prev[i] === prev[i - 1]) {
             count++;
         } else {
-            result += count.toString() + prev[i - 1];
+            result += count + prev[i - 1];
             count = 1;
         }
     }
-    result += count.toString() + prev[prev.length - 1];
+    result += count + prev[prev.length - 1];
     return result;
 }

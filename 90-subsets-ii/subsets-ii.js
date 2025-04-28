@@ -7,6 +7,7 @@ var subsetsWithDup = function (nums) {
     let n = nums.length;
     nums.sort((a, b) => a - b)
     let subsets = 1 << n;
+    let seen = new Set()
     for (let i = 0; i < subsets; i++) {
         let subset = [];
         for (let j = 0; j < n; j++) {
@@ -14,7 +15,12 @@ var subsetsWithDup = function (nums) {
                 subset.push(nums[j])
             }
         }
-        if (!ans.some(arr => arr.join(",") === subset.join(","))) {
+        // if (!ans.some(arr => arr.join(",") === subset.join(","))) {
+        //     ans.push(subset)
+        // }
+        let key = subset.join(",");
+        if (!seen.has(key)) {
+            seen.add(key);
             ans.push(subset)
         }
     }

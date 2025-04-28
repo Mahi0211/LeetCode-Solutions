@@ -1,0 +1,22 @@
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var subsetsWithDup = function (nums) {
+    let ans = [];
+    let n = nums.length;
+    nums.sort((a, b) => a - b)
+    let subsets = 1 << n;
+    for (let i = 0; i < subsets; i++) {
+        let subset = [];
+        for (let j = 0; j < n; j++) {
+            if (i & (1 << j)) {
+                subset.push(nums[j])
+            }
+        }
+        if (!ans.some(arr => arr.join(",") === subset.join(","))) {
+            ans.push(subset)
+        }
+    }
+    return ans;
+};

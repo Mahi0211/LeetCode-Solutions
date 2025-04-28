@@ -15,9 +15,6 @@ var subsetsWithDup = function (nums) {
                 subset.push(nums[j])
             }
         }
-        // if (!ans.some(arr => arr.join(",") === subset.join(","))) {
-        //     ans.push(subset)
-        // }
         let key = subset.join(",");
         if (!seen.has(key)) {
             seen.add(key);

@@ -5,7 +5,6 @@
 var permute = function (nums) {
     let result = [], temp = [];
     let used = new Set();
-
     function recursive() {
         if (temp.length === nums.length) {
             return result.push([...temp])

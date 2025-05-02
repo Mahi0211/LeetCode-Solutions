@@ -4,19 +4,18 @@
  */
 var permute = function (nums) {
     let result = [], temp = [];
-    let used = new Set();
+    let used = new Array(nums.length).fill(false)
     function recursive() {
         if (temp.length === nums.length) {
             return result.push([...temp])
         }
-        for (let num of nums) {
-            if (!used.has(num)) {
-                used.add(num);
-                temp.push(num);
-                recursive();
-                temp.pop();
-                used.delete(num)
-            }
+        for (let i = 0; i < nums.length; i++) {
+            if (used[i]) continue;
+            used[i] = true;
+            temp.push(nums[i]);
+            recursive()
+            temp.pop();
+            used[i] = false;
         }
     }
     recursive()

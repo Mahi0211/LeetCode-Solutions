@@ -4,6 +4,7 @@
  */
 
 var totalNQueens = function (n) {
+    let count = 0
     const sol = [];
     const board = Array.from({ length: n }, () => Array(n).fill('.'));
 
@@ -22,7 +23,7 @@ var totalNQueens = function (n) {
 
     const solve = (col, board, sol, n) => {
         if (col === n) {
-            sol.push(board.map(row => row.join('')));
+            count++
             return;
         }
         for (let row = 0; row < n; row++) {
@@ -35,5 +36,5 @@ var totalNQueens = function (n) {
     };
 
     solve(0, board, sol, n);
-    return sol.length;
+    return count;
 };

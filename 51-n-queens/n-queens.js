@@ -4,8 +4,7 @@
  */
 var solveNQueens = function (n) {
     const sol = [];
-    const board = Array(n).fill('.'.repeat(n));
-
+    const board = Array.from({ length: n }, () => Array(n).fill('.'))
     const isSafe = (col, row, board, n) => {
         for (let i = 0; i < col; i++) {
             if (board[row][i] === 'Q') return false;
@@ -18,17 +17,16 @@ var solveNQueens = function (n) {
         }
         return true;
     }
-
     const solve = (col, board, sol, n) => {
         if (col === n) {
-            sol.push([...board]);
+            sol.push(board.map(row => row.join('')));
             return;
         }
         for (let row = 0; row < n; row++) {
             if (isSafe(col, row, board, n)) {
-                board[row] = board[row].substring(0, col) + 'Q' + board[row].substring(col + 1)
+                board[row][col] = 'Q'
                 solve(col + 1, board, sol, n);
-                board[row] = board[row].substring(0, col) + '.' + board[row].substring(col + 1)
+                board[row][col] = '.'
             }
         }
     }

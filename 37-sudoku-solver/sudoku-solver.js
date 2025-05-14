@@ -7,10 +7,12 @@ var solveSudoku = function (board) {
         for (let i = 0; i < 9; i++) {
             if (board[i][col] === c) return false;
             if (board[row][i] === c) return false;
-            if (board[3 * Math.floor(row / 3) + Math.floor(i / 3)][3 * Math.floor(col / 3) + i % 3] === c) return false
+            let boxRow = Math.floor(row / 3) * 3 + Math.floor(i / 3);
+            let boxCol = Math.floor(col / 3) * 3 + (i % 3);
+            if (board[boxRow][boxCol] === c) return false;
         }
         return true;
-    }
+    };
 
     const solve = (board) => {
         for (let i = 0; i < 9; i++) {

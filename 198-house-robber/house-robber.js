@@ -3,19 +3,36 @@
  * @return {number}
  */
 
-//  Using Tabulation
+//  Space Optimization
 
 var rob = function (nums) {
     if (nums.length === 0) return 0;
     if (nums.length === 1) return nums[0];
-    let dp = new Array(nums.length).fill(0);
-    dp[0] = nums[0];
-    dp[1] = Math.max(nums[0], nums[1])
-    for (let i = 2; i < nums.length; i++) {
-        dp[i] = Math.max(nums[i] + dp[i - 2], dp[i - 1])
+
+    prev2 = 0;
+    prev = nums[0];
+
+    for (let i = 1; i < nums.length; i++) {
+        curi = Math.max(nums[i] + prev2, prev);
+        prev2 = prev;
+        prev = curi;
     }
-    return dp[nums.length - 1]
-}
+    return prev;
+};
+
+//  Using Tabulation
+
+// var rob = function (nums) {
+//     if (nums.length === 0) return 0;
+//     if (nums.length === 1) return nums[0];
+//     let dp = new Array(nums.length).fill(0);
+//     dp[0] = nums[0];
+//     dp[1] = Math.max(nums[0], nums[1])
+//     for (let i = 2; i < nums.length; i++) {
+//         dp[i] = Math.max(nums[i] + dp[i - 2], dp[i - 1])
+//     }
+//     return dp[nums.length - 1]
+// }
 
 //  Using Memoization
 

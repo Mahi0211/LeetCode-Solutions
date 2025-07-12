@@ -3,18 +3,14 @@
  * @return {number[][]}
  */
 var flipAndInvertImage = function (image) {
-    let n = image.length;
-    let result = [];
-    for (let i = 0; i < n; i++) {
+    for (let row of image) {
         let left = 0;
-        let right = image[i].length - 1
-        let arr = image[i]
+        let right = row.length - 1
         while (left <= right) {
-            [arr[left], arr[right]] = [arr[right] ^ 1, arr[left] ^ 1];
+            [row[left], row[right]] = [row[right] ^ 1, row[left] ^ 1];
             left++
             right--
         }
-        result.push(arr)
     }
-    return result;
+    return image;
 };

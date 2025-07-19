@@ -8,12 +8,11 @@ var containsNearbyDuplicate = function (nums, k) {
     const seen = new Map();
 
     for (let i = 0; i < nums.length; i++) {
-        const num = nums[i]
-        if (see.has(num)) {
-            const prevInd = seen.get(num);
+        if (see.has(nums[i])) {
+            const prevInd = seen.get(nums[i]);
             if (i - prevInd <= k) return true;
         }
-        seen.set(num, i)
+        seen.set(nums[i], i)
     }
     return false;
 }
